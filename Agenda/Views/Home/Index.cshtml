@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main role="main" class="container" style="padding-top: 130px;" ng-controller="compromissoController">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#criarCompromissoModal">
+        Novo Compromisso
+    </button>
+    <div class="modal fade" id="criarCompromissoModal" tabindex="-1" role="dialog" aria-labeledby="criarCompromissoModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Compromisso</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="nome">Nome do Compromisso:</label>
+                    <input type="text" class="form-control" id="nome" ng-model="novoCompromisso.nome" />
+                    <br />
+                    <label for="data">Data do Compromisso:</label>
+                    <input type="date" class="form-control" id="data" ng-model="novoCompromisso.dataCompromisso" />
+                    <br />
+                    <label for="pessoa">Compromisso para:</label>
+                    <select id="pessoa" class="form-control" ng-options="pessoa.nome for pessoa in pessoasList" ng-model="novoCompromisso.pessoa"></select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" ng-click="criarCompromisso(novoCompromisso)">Criar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Data Compromisso</th>
+            <th scope="col">Pessoa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="compromisso in compromissosList">
+            <td>{{compromisso.nome}}</td>
+            <td>{{compromisso.dataCompromisso | date: 'dd-MM-yyyy'}}</td>
+            <td>{{compromisso.pessoa.nome}}</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<script src="js/compromissoController.js"></script>

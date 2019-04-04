@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main role="main" class="container" style="padding-top: 130px;" ng-controller="pessoaController">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#criarCompromissoModal">
+        Adicionar Pessoa
+    </button>
+    <div class="modal fade" id="criarCompromissoModal" tabindex="-1" role="dialog" aria-labeledby="criarCompromissoModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Compromisso</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="nome">Nome da Pessoa:</label>
+                    <input type="text" class="form-control" id="nome" ng-model="novaPessoa.nome" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" ng-click="criarPessoa(novaPessoa)">Criar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pessoa in pessoasList">
+                <td>{{pessoa.nome}}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<script src="js/pessoaController.js"></script>
